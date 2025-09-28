@@ -1,0 +1,317 @@
+/* --- Global Variables (Based on Image Aesthetic) --- */
+:root {
+  --primary-purple: #9b59b6;
+  --primary-dark-text: #34495e; /* Darker, cleaner text than the original blue */
+  --light-bg: #f5f7fa; /* Very light, subtle background */
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+  --border-color: #e0e0e0;
+}
+
+/* ---------------------------------------------------- */
+/* --- 1. Dashboard Layout & Title --- */
+/* ---------------------------------------------------- */
+/* --- Dashboard Header Container --- */
+.dashboard-header {
+    /* Ensure this container is centered and sets the boundary for the title and the button */
+    display: flex;
+    justify-content: center; /* Center the h2 */
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    position: relative; /* CRITICAL: Establishes context for absolute positioning */
+    padding: 0 10px; /* Add slight padding so button isn't glued to the edge */
+}
+.logout-btn:hover {
+    background: #dcdde1;
+}
+
+/* --- Title (Ensures it remains centered despite the button) --- */
+
+
+.logout-btn {
+    /* Base styles (Keep existing theme colors) */
+    background: #ecf0f1;
+    color: var(--primary-dark-text);
+    border: 1px solid #bdc3c7;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap; /* Prevent button text from wrapping */
+
+    /* CRITICAL: Positioning to the top-right */
+    position: absolute; 
+    top: 0;
+    right: 0;
+}
+.admin-dashboard {
+  padding: 40px 20px; /* Increased top/bottom padding */
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif; /* Use a modern font stack */
+  background: var(--light-bg); /* Use solid light background for cleaner look */
+  min-height: 100vh;
+}
+
+.admin-dashboard h2 {
+    /* The h2 is centered within the flex container */
+    text-align: center;
+    color: var(--primary-dark-text); 
+    margin: 0; /* Remove default vertical margin */
+    font-size: 36px;
+    font-weight: 700;
+}
+@media (max-width: 600px) {
+    .dashboard-header {
+        /* On small screens, stack the title and the button */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+        
+        /* Remove absolute positioning so the button flows naturally */
+        position: static; 
+        padding-left: 15px;
+    }
+    
+    .logout-btn {
+        /* Return to normal flow */
+        position: static;
+        width: 100%; /* Make it full width below the title */
+        justify-content: center;
+    }
+    
+    .admin-dashboard h2 {
+        text-align: left;
+    }
+}
+/* ---------------------------------------------------- */
+/* --- 2. Action Buttons (Replacing .tab-buttons for distinct actions) --- */
+/* ---------------------------------------------------- */
+
+/* This div now holds the two distinct action buttons */
+.tab-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.tab-buttons button {
+  padding: 12px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px; /* Rounded corners for buttons */
+  font-size: 16px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Primary Button: "Add Student" */
+.primary-action-btn { 
+  background: var(--primary-purple);
+  color: white;
+}
+
+.primary-action-btn:hover {
+  background: #8e44ad; /* Slightly darker purple on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary Button: "View Gatepass Requests" */
+.secondary-action-btn { 
+  background: white;
+  color: var(--primary-dark-text);
+  border: 1px solid var(--border-color);
+  box-shadow: none; /* Remove shadow from secondary button */
+}
+
+.secondary-action-btn:hover {
+  background: #f0f0f0;
+  transform: none;
+  border-color: var(--primary-purple);
+}
+
+/* ---------------------------------------------------- */
+/* --- 3. Card Styling (Applied to the main content containers) --- */
+/* ---------------------------------------------------- */
+
+/* Used for both the form and the student list containers */
+.tab-content, .list-content { 
+  background: white;
+  padding: 30px;
+  border-radius: 15px; /* More rounded corners for the card look */
+  box-shadow: var(--card-shadow); 
+  border: none; /* Removed thin border for cleaner look */
+  max-width: 1000px;
+  margin: 20px auto;
+}
+
+/* Separate list content card from form card */
+.list-content {
+    margin-top: 30px;
+}
+
+.form-section h3 {
+  margin-bottom: 20px;
+  color: var(--primary-dark-text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------- */
+/* --- 4. Form Grid and Inputs --- */
+/* ---------------------------------------------------- */
+
+.form-grid {
+  /* Use a consistent grid for forms */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px; /* Increased gap */
+  margin-bottom: 20px;
+}
+
+.form-grid input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px; /* Slightly more rounded inputs */
+  outline: none;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+.form-grid input:focus {
+  border-color: var(--primary-purple); /* Purple focus border */
+  box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.2);
+}
+
+/* Primary Form Submit Button (Create) */
+.primary-btn { 
+  background: var(--primary-purple);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 150px; /* Set a specific width */
+  margin-top: 10px;
+}
+
+.primary-btn:hover {
+  background: #8e44ad;
+}
+
+/* ---------------------------------------------------- */
+/* --- 5. Data Table Styling --- */
+/* ---------------------------------------------------- */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  border-radius: 10px;
+  overflow: hidden; /* Ensures rounded corners apply to table elements */
+}
+
+.data-table h3 {
+    margin-bottom: 15px;
+    color: var(--primary-dark-text);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.data-table th,
+.data-table td {
+  border: none; /* Remove internal borders */
+  padding: 12px 15px; /* Increased padding */
+  text-align: left;
+}
+
+/* Table Header (th) - Light Blue/Purple background */
+.data-table thead th {
+  background: #e6e6fa; /* Lavender/Light Purple shade */
+  color: var(--primary-dark-text);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+/* Alternating Row Colors (Zebra Striping) */
+.data-table tbody tr:nth-child(even) {
+  background-color: #f9fafc; /* Very light grey */
+}
+
+.data-table tbody tr:hover {
+    background-color: #fff7ed; /* Subtle hover effect */
+    cursor: default;
+}
+
+/* ---------------------------------------------------- */
+/* --- Media Queries for Responsiveness --- */
+/* ---------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .admin-dashboard h2 {
+    font-size: 28px;
+  }
+  
+  .tab-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .tab-buttons button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .tab-content, .list-content {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+ /* --- Add these styles to AdminDashboard.css --- */
+
+/* Styles for the History Tab status badges/colors */
+.status-approved {
+    font-weight: 600;
+    color: #27ae60; /* Green */
+}
+
+.status-rejected {
+    font-weight: 600;
+    color: #e74c3c; /* Red */
+}
+
+.status-pending {
+    font-weight: 600;
+    color: #f39c12; /* Orange/Yellow */
+}
+.stat-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+.chart-wrapper {
+    height: 350px;
+}

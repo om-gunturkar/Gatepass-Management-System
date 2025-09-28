@@ -1,0 +1,240 @@
+/* --- Global Styles & Variables --- */
+:root {
+  --primary-purple: #C32EDA; /* A shade close to the button color */
+  --secondary-purple: #d07fef; /* Lighter shade */
+  --text-dark: #333;
+  --text-light: #555;
+  --background-white: #fff;
+  --border-light: #e0e0e0;
+  --spacing-xl: 80px;
+  --spacing-lg: 40px;
+  --spacing-md: 20px;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a common system font stack */
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-white);
+  color: var(--text-dark);
+}
+
+/* --- Utility Buttons (Admin/Student Login & Pricing) --- */
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-login, .student-login {
+  background-color: var(--primary-purple);
+  color: var(--background-white);
+  margin-left: var(--spacing-md);
+}
+
+.student-login:hover, .admin-login:hover {
+  background-color: #e4a5ff; /* Slightly darker hover */
+  color: black;
+}
+
+.pricing-button {
+  background-color: var(--primary-purple);
+  color: var(--background-white);
+  padding: 12px 30px;
+  margin-top: var(--spacing-md);
+  /* Matching the rounded shape from the image */
+  border-radius: 25px; 
+}
+
+/* --- Header --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%; /* Padding on the sides */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  padding: var(--spacing-xl) 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+.highlight {
+  /* No specific style needed for the text itself, but it highlights the key phrase */
+  /* You can add a specific color or weight if desired */
+  color: var(--text-dark); 
+}
+
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  max-width: 600px;
+  overflow: hidden; /* Important for the circular/rounded crop effect */
+  border-radius: 30px; /* Large border radius for the corner effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image-placeholder {
+    /* Create the large, rounded container seen in the image */
+    width: 100%;
+    height: 500px; /* Adjust height as needed */
+    position: relative;
+    background-color: var(--border-light); /* Placeholder background */
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.actual-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+    /* Add any specific visual adjustments for the image here */
+}
+
+/* --- Features Section --- */
+.features-section {
+  padding: var(--spacing-xl) 5%;
+  text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.features-section h2 {
+  font-size: 32px;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 600;
+}
+
+.features-grid {
+  display: grid;
+  /* Creates a 4-column layout */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.feature-card {
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transform:scale(1.05);
+  border:1px solid black;
+}
+
+.feature-icon-wrapper {
+  margin-bottom: 10px;
+  color: var(--primary-purple);
+  /* Simulate the icon's background circle from the image */
+  padding: 8px;
+  background-color: #f7f3f9; 
+  border-radius: 50%;
+  display: inline-flex;
+}
+
+.feature-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.feature-description {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+/* --- Responsiveness (Optional but recommended) --- */
+@media (max-width: 1024px) {
+  .features-grid {
+    /* 3 columns on tablets */
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  
+  .features-grid {
+    /* 2 columns on small screens */
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
+  .hero-image-placeholder {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-buttons button {
+    margin: 5px;
+  }
+
+  .features-grid {
+    /* Single column on mobile */
+    grid-template-columns: 1fr; 
+  }
+}
